@@ -1,0 +1,34 @@
+Category:OSINT
+Difficulty:easy
+Platform:THM
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Description:
+
+The breakfast terrace is loud this morning, clinking cutlery, espresso machines, the usual chatter. One guest couldn't help but linger at a
+nearby table, seeing more of a conversation than they were meant to.When the table's occupant stepped away for a refill, they seized the moment
+and grabbed a screenshot before it could disappear. Somewhere in that conversation is enough to track down an account nobody was supposed to find.
+
+🏖️ TODAY'S ITINERARY
+a. Analyze the provided conversation for identifying details
+b. Extract the relevant clues
+c. Locate the hidden account
+d. Submit the flag
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Approach:
+
+After downloading the zip file provided we were able to access a screenshot of the conversation between Lambo who recommended this resort for stay in 
+to Ponzi who is an Influencer. She asks him for his social media handles which he replied to that he doesnt use it much but he has all his social 
+media handles and profile uploaded on an app that starts with "G" and his email address is "lambobytelotushotel@gmail.com". On searching for this website
+with G i pondered upon Gravatar where u can post ur social media handles and profile pictures. I ran the cmd {echo -n "lambobytelotushotel@gmail.com"
+161770| md5sum} which proivded me with the hash id for his mail that is "d4a5fc5d3128890778667e24617d7cc0" on searching 
+"https://gravatar.com/d4a5fc5d3128890778667e24617d7cc0" i was redireected to his profile where the flag for this ctf was in b64 format which i decoded
+using CyberChef.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Solution:
+THM{S3creT_Pr0fil3_H4s_b33n_Ident1fi3d}
