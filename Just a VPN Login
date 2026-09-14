@@ -29,8 +29,45 @@ please navigate to the following URL in your own browser: https://static-labs.tr
 
 Approach:
 
+This room was built around to give you an experince of how a day at work looks like for a SoC analyst. here we had to exploit and explore these sites to get the
+answers at each level of this room. 
 
+I will now show how i approached those asked questions in this room. 
+
+Q1. What is the ASN number related to the IP?
+As soon as you search for the ip address in TryDetectThis it redirects you to the pg where the ASN no is written at the top. ASN=212238
+
+Q2. Which service is offered from this IP?
+After reviewing the IP overview you see multiple references to VPN and proxy software communicating with this IP. Which then clarifies it
+is a VPN service
+
+Q3. What is the filename of the file related to the hash?
+If you enter the hash in TryDetectThis  it will show you the info abt the files that includes its file name
+
+Q4. What is the threat signature that Microsoft assigned to the file?
+Scrolling down the vendor analysis section you will see the threat next to the name microsoft that is Trojan:Win32/LummaStealer.PM!MTB
+
+Q5. One of the contacted domains is part of a large malicious infrastructure cluster.Based on its HTTPS certificate, how many domains are linked to the same 
+campaign?
+Under the file communication behaviour section there is a listed of affected sites pick any of them for example gadgethgfub.icu and search it up on TryDetectThis
+Navigate to HTTPS Certificate information and copy all the domains under SANs and after counting you will get the answer as 151.
+
+Q6. The file matches one of the YARA rules made by "kevoreilly". What line is present in the rule's "condition" field?
+After looking up for the github link you will see the code that has a section named "condition" you have to paste the contents of it here.
+
+Q7. The file is also mentioned in a threat intel report. What is the title of the report mentioning this hash?
+Under the reports section you will see the file name that is Behind the Curtain: How Lumma Affiliates Operate.
+
+Q8. Which team did the author of the malware start collaborating with in early 2024?
+After copying the link of the file open it in another tab and search for "2024" in the pdf you will see the name GhostSocks as the answer.
+
+Q9. A Mexican-based affiliate related to the malware family also uses other infostealers. Which mentioned infostealer targets Android systems?
+The same way as question 8 search for mexican based you will see the name CraxsRAT.
+
+Q10 The report states that the affiliates behind the malware use the services of AnonRDP. Which Mitre ATT&CK sub-technique does this align with?
+Searxh for Mitre ATT&CK and match AnonRDP usage to the MITRE technique.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Solution:
+Conclusion:
+this room emphasizes threat intelligence (TI) analysis, indicator validation, malware investigation, and MITRE ATT&CK mapping.
