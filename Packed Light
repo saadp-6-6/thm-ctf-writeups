@@ -1,0 +1,44 @@
+Category:forensics
+Difficulty:easy
+Platform:THM
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Description:
+
+🛎️ Concierge Briefing
+Tiny packets. Odd hours. Suspiciously regular. Someone's smuggling out the data equivalent of a hotel towel every night,
+folded neatly inside traffic that looks ordinary until you decode it.
+A short capture from the guest network is all VERA could pull before the connection dropped. Somewhere in that traffic,
+a quiet little errand is running on a loop, and it isn't part of any service the hotel actually offers.
+
+🗝️ ROOM ACCESS
+Download Task Files
+
+
+🏖️ TODAY'S ITINERARY 
+Analyze the provided capture for a covert communication channel.
+Identify where the exfiltrated data is being hidden and reassemble it.
+Decode the recovered data and submit the flag.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Approach:
+
+Download the pcap file and run it one wireshark you will see a lot of logs there in the filter command type "HTTP" and at the very first
+glance you will see something suspicious is going on here. Right click on the very first log and follow path to tcp stream this log on analysis
+we will see there the code which shows the below as the encrypted key
+def getkey():
+    p1 = "H0t3lSt@ff0Nly"
+    p2 = "K3epS3cr3t!"
+    return p1 + p2
+the line  "encrypted = xor(raw_bytes, getkey().encode('utf-8'))" confirms that it is in XOR format and this line "Cookie": f"hotel_sess_state={b64_string}"
+shows that this is related something with http cookies. 
+So we run the filter as http.cookie contains "hotel_sess_state" so it shows a list of abt 25 logs on clicking on these logs and in the terminal section 
+the drop down for HTTP we see a single digit encrypted in b64 format example like "HA==" so there are like this in every log after writing all of these in 
+cyberchef one after another using "from b64" and XOR keeping the key as "H" on UTF8 we get the answer to this flag 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Solution:
+THM{V3r4_1s_w4tch1ng_0veR_y0u}
