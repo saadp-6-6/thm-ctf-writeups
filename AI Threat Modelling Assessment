@@ -1,0 +1,48 @@
+Category:AI threat modelling
+Difficulty:easy
+Platform:THM
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Description:
+
+Over the last two modules, you have learned what AI and machine learning are, how they work, and how they
+manifest into real-world security vulnerabilities. You were then taught how to assess an AI system as an 
+attack surface and apply a structured threat modelling methodology to it.Now it's time to put that knowledge
+to the test. Use your combined understanding of AI threats and AI systems to pass the following assessment. 
+Click on the View Site button to get started.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Approach:
+
+The site is divided into 2 parts and on completing one part a flag is generated. The 1st part consisted of 
+7 mcq type questions only correctly answering them the 1st flag was available. These questions consisted of 
+the different types of attacks that can happen and how to overcome these attacks.
+
+The second part had 3 scenarions here we have to correctly guess where we have to put the sheild in order to
+prevent the data breach.
+
+a. Prompt injection: A prompt injection attack is incoming. The attacker will attempt to override system instructions
+                     by embedding malicious commands in the user input. You have 2 shields — place them wisely.
+
+            User Input---->API Gateway(routes request)---->Prompt(assembled prompt)---->LLM agent(fetch context/context)---->retrival(query)---->database(results)
+
+here we place the sheild at Prompt cause this is where the input is incorporated and LLM agent as it receives final 
+prompt and if it receives tampered instructions it will expose data.
+
+b. Sensetive data leakage attack: A data leakage attack is incoming. The attacker will attempt to extract sensitive information
+                                  through crafted queries. You have 3 shields — protect the components that handle data.
+
+           User Input---->API Gateway(routes request)---->Prompt(assembled prompt)---->LLM agent(fetch context/context)---->retrival(query)---->database(results)
+
+here we palce the sheild at "LLM" as it decides what to include in the response, "retrival" as it fetches contextual data. 
+If filtering is weak, it may return sensitive information. and database cause it stores embeddings or records that may 
+contain confidential data. 
+
+c. Data poisoning: A data poisoning attack is incoming. The attacker has injected malicious data that will propagate through
+the system from the data layer. You have 2 shields — protect the data components.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Solution:
