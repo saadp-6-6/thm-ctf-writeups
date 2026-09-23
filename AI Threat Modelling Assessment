@@ -43,6 +43,14 @@ contain confidential data.
 c. Data poisoning: A data poisoning attack is incoming. The attacker has injected malicious data that will propagate through
 the system from the data layer. You have 2 shields — protect the data components.
 
+         User Input---->API Gateway(routes request)---->Prompt(assembled prompt)---->LLM agent(fetch context/context)---->retrival(query)---->database(results)
+
+here we place the sheild at "retrival" cause if poisoned data is stored and later retrieved, it influences model outputs even
+after deployment. And "database" because it stores training or behavioral data.
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Solution:
+
+flag 1: THM{threat_m0d3l_re4d1_}
+flag 2: THM{AI_thr3at_m0dell3d} 
